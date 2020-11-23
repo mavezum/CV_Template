@@ -1,0 +1,187 @@
+% LaTeX resume using res.cls
+\documentclass[twoside]{article}
+%\usepackage{helvetica} % uses helvetica postscript font (download helvetica.sty)
+%\usepackage{newcent}   % uses new century schoolbook postscript font 
+\setlength{\textwidth}{5.1in} % set width of text portion
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{eurosym}
+\usepackage{url}
+\usepackage{multicol}
+
+% ------ RATING COMMAND
+\usepackage{tikz}
+\def\myscale{0.25}
+\definecolor{myblue}{RGB}{46,66,150} %TODO: You can change the color of the dots here. I like this blue, but they are in R G B format (out of 255). You can also just use plain "blue" or "pink" or "orange" or whatever color name in the command below, where myblue is currently written. Pink is also nice :) 
+\newcommand{\score}[2]{%
+  \begin{tikzpicture}
+    \foreach \x in {1,...,#2} {%
+	    \ifnum \x > #1
+	    \draw[fill=white] (\x*\myscale,-1) circle (0.1cm);
+	    \else
+	    \draw[fill=myblue] (\x*\myscale,-1) circle (0.1cm);
+	    \fi
+  }
+  \end{tikzpicture}%
+}
+
+%------ JOB FORMATTING COMMANDS-----
+%Note: Several of these must be used in a tabular/table/longtable environment!
+\newcommand{\newjob}[5]{\raggedleft #2 & \parbox[t]{13cm}{{\bf #1} \\
+#4 \hfill (#3)
+\vspace{-2mm}
+\begin{itemize} \itemsep -2pt
+\item #5
+\end{itemize}
+}}
+\newcommand{\newjobnobullet}[4]{\raggedleft #2 & \parbox[t]{13cm}{{\bf #1} \\
+#4 \hfill (#3)
+\vspace{2mm}
+}}
+
+\newcommand{\newsinglelinejob}[3]{\raggedleft #2 & \parbox[t]{13cm}{{\bf #1} \hfill (#3)
+}}
+
+\newcommand{\newsinglelineAwardNoPlace}[2]{\raggedleft #2 & \parbox[t]{13cm}{{\bf #1}}}
+
+\newcommand{\horizontalline}{
+ \vspace{-6 mm}
+%line separating the whole thing...
+\makebox[\linewidth]{\rule{0.8\paperwidth}{0.6pt}}
+\newline
+}
+
+\usepackage{geometry}
+\geometry{a4paper, portrait, margin=2cm}
+%----------------------------------- BEGIN DOCUMENT
+\begin{document}
+
+\vspace{-3 mm}
+\noindent
+%----------------------------------- NAME & FOTO
+%	\begin{minipage}[t][][t]{1\textwidth}
+	\begin{minipage}[t][][t]{0.37\textwidth} %TODO: Allign the name through the number 0.37. Sorry for this not being automatic
+\centerline{\huge \bf Erika Musterfrau }
+	\end{minipage}
+	\hfill
+%\newline
+	\begin{minipage}[t]{0.4\textwidth}
+	%\center 
+	%m.avezum@tum.de, +49 (0) 176/72812160
+	\hfill \includegraphics[width=3cm]{userImage}
+\end{minipage}
+\newline
+%line spearting the whole thing...
+\makebox[\linewidth]{\rule{0.9\paperwidth}{1pt}}
+\newline
+
+\noindent
+%----------------------------------- ADDRESS & PERSONAL INFORMATION
+\begin{minipage}{0.5\textwidth}
+\textbf{ADDRESS}\\ 
+Musterstr 42\\
+88888 Munich, Germany\\
++49 (0) 171/1234 5678\\
+test@example.com 
+\end{minipage} \hfill
+\begin{minipage}{0.5\textwidth}
+\flushright
+\textbf{PERSONAL INFORMATION} \\ 
+Born: January 1st 1989\\
+Place:  Munich, Germany \\
+Nationality: German \\
+Family status: single\\
+\end{minipage}
+
+%-----------------------------------------PERSONAL STATEMENT
+\section*{PERSONAL STATEMENT} 
+\horizontalline
+\newline
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+%------------------------------------ WORK EXPERIENCE
+\section*{WORK EXPERIENCE} 
+\horizontalline
+\newline
+\begin{tabular}{p{3.5cm} | l}
+\newjob{Company}{Jan 2020 - Sep 2020}{City, Country}{Position}{
+Did many amazing things with a single bullet point
+}
+\\
+\newjob{Company}{Jan 2019 - Dec 2019}{City, Country}{Position}
+{First few amazing things 
+\item Even more amazing things with more bullet points
+\item Dont forget to close each job with \} and afterwards to enter  \textbackslash\textbackslash in latex to keep the formatting right. }
+\\
+\newjob{Company}{2019}{City, Country}{Position}{Saved the world}\\ 
+\newsinglelinejob{Company}{2018}{City, Country} \\
+\newjobnobullet{Company}{2017}{City, Country}{Position}\\
+
+\end{tabular}
+\section*{CORE SKILLS}
+\horizontalline
+\begin{multicols}{3}
+\noindent
+\score{5}{5} Communication\\	
+\score{4}{5} \LaTeX \\	
+\score{5}{5} English \\
+\score{3}{5} German \\
+\score{4}{5} Amazing Skill 1 \\
+\score{2}{5} Programming Language 2 \
+\end{multicols}
+%TODO: Decide if you want to break pages here. If yes, enable the comment below
+\newpage
+
+%--------------------------------------ACADEMIC PROFILE
+\section*{ACADEMIC PROFILE}
+\horizontalline
+\newline
+\begin{tabular}{p{3.5cm}  | l}
+\newjobnobullet{Degree in Subject}{May 2014 - Mar 2017}{City, Country}{Amazing University of the World}
+\\ & \\
+\newjob{Major Degree in Subject}{Oct 2010 - Apr 2014}{City, Country}{Amazing University of the World}{\textbf{Minor:} Business Administration}
+\\ & \\
+\newsinglelinejob{Exchange Semester in Exotic Location}{Sep 2012 - Feb 2013}{City, Country}
+\\  & \\
+\newjobnobullet{Smaller Course with Relevance}{Oct 2009 - Sep 2010}{City, Country}{Important Institution}
+\end{tabular}
+
+%TODO: Decide if you want to break pages here. If yes, enable the comment below
+%\newpage
+
+%TODO: Decide if you prefer the CORE SKILLS section above, or this one. Delete one of them!
+\section*{PROGRAMMING \& LANGUAGE SKILLS}
+\horizontalline
+{\bf Programming Languages:} Python, Java 1.6, etc  \\
+{\bf Operating Systems:} Windows XP, Vista, 7, 8, etc \\
+{\bf Softwares:} \LaTeX, Adobe Photoshop CS 6, Microsoft Office, etc \\
+{\bf Languages:}
+ English \small{(native language)}, English  \small{(fluent)},  English \small{(fluent)}, English \small{(basic)} 
+
+\section*{SELECTED AWARDS \& KEYNOTES}
+\horizontalline
+\newline
+\begin{tabular}{p{3.5cm}  | l}
+\newsinglelineAwardNoPlace{Inspiring Event in region}{2019}\\
+\newsinglelineAwardNoPlace{Inspiring Event in region}{2019}\\
+\newsinglelineAwardNoPlace{Inspiring Event in region}{2019}\\
+\newsinglelineAwardNoPlace{Inspiring Event in region}{2019}\\
+\end{tabular}\\
+
+ \section*{SELECTED ACTIVITIES} %oder Project Experience?
+\horizontalline
+\newline
+\begin{tabular}{p{3.5cm} | l}
+\newjobnobullet{Project}{\hspace{2.6cm}2019-\\Current}{City, Country}{Role or information}\\
+\newjobnobullet{Cool Project or Experience}{2017-2018}{City, Country}{Role or information}\\
+\newsinglelinejob{Cool Experience}{2016}{City, Country}\\
+%\newsinglelinejob{Girl Scout}{2001}{San Antonio, USA}\\ \vspace{3mm}
+%\newjobnobullet{Contraponto, Editora Mandruv\'{a}}{1999}{S\~{a}o Paulo, Brazil}{Participation on short story collection, Various Authors}
+\end{tabular}
+\vspace{-2mm}
+\section*{SELECTED PUBLICATIONS} %oder Project Experience?
+\horizontalline
+$\bullet$ Boring information that you can just format yourself. No fancy commands were used here, because it is not a tabular environment.\\ 
+$\bullet$ Most fancy commands were optimized for tabular environments. The exception is the \textbackslash score of the CORE SKILLS. 
+
+\end{document}	
