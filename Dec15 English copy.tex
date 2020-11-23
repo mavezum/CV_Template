@@ -1,13 +1,11 @@
 % LaTeX resume using res.cls
 \documentclass[twoside]{article}
-%\usepackage{helvetica} % uses helvetica postscript font (download helvetica.sty)
-%\usepackage{newcent}   % uses new century schoolbook postscript font 
 \setlength{\textwidth}{5.1in} % set width of text portion
 \usepackage{graphicx}
 \usepackage{float}
 \usepackage{eurosym}
-\usepackage{url}
 \usepackage{multicol}
+\usepackage{longtable}
 
 % ------ RATING COMMAND
 \usepackage{tikz}
@@ -66,8 +64,6 @@
 	\hfill
 %\newline
 	\begin{minipage}[t]{0.4\textwidth}
-	%\center 
-	%m.avezum@tum.de, +49 (0) 176/72812160
 	\hfill \includegraphics[width=3cm]{userImage}
 \end{minipage}
 \newline
@@ -103,7 +99,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 \section*{WORK EXPERIENCE} 
 \horizontalline
 \newline
-\begin{tabular}{p{3.5cm} | l}
+\begin{longtable}{p{3.5cm} | l}
 \newjob{Company}{Jan 2020 - Sep 2020}{City, Country}{Position}{
 Did many amazing things with a single bullet point
 }
@@ -117,7 +113,7 @@ Did many amazing things with a single bullet point
 \newsinglelinejob{Company}{2018}{City, Country} \\
 \newjobnobullet{Company}{2017}{City, Country}{Position}\\
 
-\end{tabular}
+\end{longtable}
 \section*{CORE SKILLS}
 \horizontalline
 \begin{multicols}{3}
@@ -129,7 +125,7 @@ Did many amazing things with a single bullet point
 \score{4}{5} Amazing Skill 1 \\
 \score{2}{5} Programming Language 2 \
 \end{multicols}
-%TODO: Decide if you want to break pages here. If yes, enable the comment below
+%TODO: Decide if you want to break pages here. If not, comment the next line
 \newpage
 
 %--------------------------------------ACADEMIC PROFILE
@@ -175,8 +171,6 @@ Did many amazing things with a single bullet point
 \newjobnobullet{Project}{\hspace{2.6cm}2019-\\Current}{City, Country}{Role or information}\\
 \newjobnobullet{Cool Project or Experience}{2017-2018}{City, Country}{Role or information}\\
 \newsinglelinejob{Cool Experience}{2016}{City, Country}\\
-%\newsinglelinejob{Girl Scout}{2001}{San Antonio, USA}\\ \vspace{3mm}
-%\newjobnobullet{Contraponto, Editora Mandruv\'{a}}{1999}{S\~{a}o Paulo, Brazil}{Participation on short story collection, Various Authors}
 \end{tabular}
 \vspace{-2mm}
 \section*{SELECTED PUBLICATIONS} %oder Project Experience?
